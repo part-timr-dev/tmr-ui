@@ -1,5 +1,18 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
+# npm run lint:fix   # Fix any ESLint issues automatically
 npm run lint
+
+# npm run format:fix # Fix any Prettier formatting issues automatically
 npm run format
+
+# Check if there are any test files that need to be run
+if git diff --cached --name-only | grep -qE '\.test\.js$|\.test\.ts$|\.spec\.js$|\.spec\.ts$'; then
+  echo ""
+  echo "\033[32mRunning tests related to changed files...\033[0m"
+  npm run test -- --findRelatedTests
+else
+  echo ""
+  echo "\033[33mNo relevant tests found. Skipping test execution.\033[0m"
+fi
