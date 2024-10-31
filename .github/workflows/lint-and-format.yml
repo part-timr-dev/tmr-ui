@@ -1,0 +1,73 @@
+name: Lint, Format, and Conditional Test
+
+on:
+  push:
+    branches: [main] # Adjust this to your default branch
+  pull_request:
+    branches: [main] # Adjust this to your default branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check code formatting
+        run: npm run format
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    if: success() # Run this job only if previous jobs succeeded
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check for test files
+        id: check_tests
+        run: |
+          if [ -n "$(ls src/**/*test.{js,jsx,ts,tsx} 2> /dev/null)" ]; then
+            echo "Test files found."
+            echo "run_tests=true" >> $GITHUB_ENV
+          else
+            echo "No test files found."
+            echo "run_tests=false" >> $GITHUB_ENV
+          fi
+
+      - name: Run tests
+        if: env.run_tests == 'true'
+        run: npm test

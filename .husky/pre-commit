@@ -15,4 +15,5 @@ if git diff --cached --name-only | grep -qE '\.test\.js$|\.test\.ts$|\.spec\.js$
 else
   echo ""
   echo "\033[33mNo relevant tests found. Skipping test execution.\033[0m"
+  echo ""
 fi
