@@ -61,7 +61,7 @@ interface YourComponentNameProps {
     // Define your props here
 }
 
-const YourComponentName: React.FC<YourComponentNameProps> = (props) => {
+const YourComponentName: = (props: YourComponentNameProps) => {
     return (
         <div>
             {/* Your component implementation */}
@@ -93,22 +93,38 @@ Default.args = {
     // Define default args here
 };
 ```
+More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+
+Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+
+This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+
+More on argTypes: https://storybook.js.org/docs/api/argtypes
+
+Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 
 ## Writing Examples for the Component
 
 Inside the same file where you wrote the documentation (`YourComponentName.stories.tsx`), you can add more examples by creating additional stories:
 
 ```tsx
-export const ExampleOne = Template.bind({});
-ExampleOne.args = {
-    // Define args for ExampleOne
+export const Primary: Story = {
+  args: {
+    primary: true,
+    label: 'Button',
+  },
 };
 
-export const ExampleTwo = Template.bind({});
-ExampleTwo.args = {
-    // Define args for ExampleTwo
+export const Secondary: Story = {
+  args: {
+    label: 'Button',
+  },
 };
 ```
+
+Check out [Writing Stories for Storybook document](https://storybook.js.org/docs/writing-stories/args) to learn more
 
 ## Learn More
 
