@@ -1,46 +1,243 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-## Available Scripts
+### Prerequisites
 
-In the project directory, you can run:
+Make sure you have the following installed:
 
-### `npm start`
+- Node.js
+- npm or yarn
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Clone the repository with SSH**:
 
-### `npm test`
+```sh
+git clone git@github.com:part-timr-dev/tmr-ui.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Navigate to the project directory**:
 
-### `npm run build`
+```sh
+cd project-name
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running Storybook
 
-### `npm run eject`
+To run Storybook for developing and testing components:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+npm run storybook
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will start Storybook and open it in your default web browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Writing a New Component
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Navigate to the `/src/stories/_components` directory:
+
+```sh
+```
+
+Create a new directory for your component inside the components directory:
+
+```sh
+mkdir ComponentName
+```
+
+Inside the new directory, create your component file, e.g., `YourComponentName.tsx`:
+
+```tsx
+import React from 'react';
+
+interface YourComponentNameProps {
+    // Define your props here
+}
+
+const YourComponentName: React.FC<YourComponentNameProps> = (props) => {
+    return (
+        <div>
+            {/* Your component implementation */}
+        </div>
+    );
+};
+
+export default YourComponentName;
+```
+
+## Writing Documentation for the Component
+
+Create a new file for your component's documentation inside the stories directory, e.g., `YourComponentName.stories.tsx`:
+
+```tsx
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import YourComponentName from '../components/YourComponentName/YourComponentName';
+
+export default {
+    title: 'Components/YourComponentName',
+    component: YourComponentName,
+} as Meta;
+
+const Template: Story = (args) => <YourComponentName {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+    // Define default args here
+};
+```
+
+## Writing Examples for the Component
+
+Inside the same file where you wrote the documentation (`YourComponentName.stories.tsx`), you can add more examples by creating additional stories:
+
+```tsx
+export const ExampleOne = Template.bind({});
+ExampleOne.args = {
+    // Define args for ExampleOne
+};
+
+export const ExampleTwo = Template.bind({});
+ExampleTwo.args = {
+    // Define args for ExampleTwo
+};
+```
+
+## Learn More
+
+You can learn more in the Sure, here's a draft for your README document:
+
+```markdown
+# Project Name
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-repo/project-name.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd project-name
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
+    or
+    ```sh
+    yarn install
+    ```
+
+## Running the App
+
+### Running Storybook
+
+To run Storybook for developing and testing components:
+
+```sh
+npm run storybook
+```
+or
+```sh
+yarn storybook
+```
+
+This will start Storybook and open it in your default web browser.
+
+## Writing a New Component
+
+1. Navigate to the 
+
+src
+
+ directory:
+    ```sh
+    cd src
+    ```
+2. Create a new directory for your component inside the `components` directory:
+    ```sh
+    mkdir components/YourComponentName
+    ```
+3. Inside the new directory, create your component file, e.g., `YourComponentName.tsx`:
+    ```tsx
+    import React from 'react';
+
+    interface YourComponentNameProps {
+        // Define your props here
+    }
+
+    const YourComponentName: React.FC<YourComponentNameProps> = (props) => {
+        return (
+            <div>
+                {/* Your component implementation */}
+            </div>
+        );
+    };
+
+    export default YourComponentName;
+    ```
+
+## Writing Documentation for the Component
+
+1. Create a new file for your component's documentation inside the 
+
+stories
+
+ directory, e.g., `YourComponentName.stories.tsx`:
+    ```tsx
+    import React from 'react';
+    import { Meta, Story } from '@storybook/react';
+    import YourComponentName from '../components/YourComponentName/YourComponentName';
+
+    export default {
+        title: 'Components/YourComponentName',
+        component: YourComponentName,
+    } as Meta;
+
+    const Template: Story = (args) => <YourComponentName {...args} />;
+
+    export const Default = Template.bind({});
+    Default.args = {
+        // Define default args here
+    };
+    ```
+
+## Writing Examples for the Component
+
+1. Inside the same file where you wrote the documentation (`YourComponentName.stories.tsx`), you can add more examples by creating additional stories:
+    ```tsx
+    export const ExampleOne = Template.bind({});
+    ExampleOne.args = {
+        // Define args for ExampleOne
+    };
+
+    export const ExampleTwo = Template.bind({});
+    ExampleTwo.args = {
+        // Define args for ExampleTwo
+    };
+    ```
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+To learn how Storybook and how it works, checkout [StoryBook documentation](https://storybook.js.org/docs)
