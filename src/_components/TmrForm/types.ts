@@ -13,7 +13,7 @@ export type InputItemType =
 export type InputItem = {
   label: string;
   type?: InputItemType;
-  placeholder: string;
+  placeholder?: string;
   errorOnEmpty: string;
   validateError: (value: string) => string | boolean;
 };

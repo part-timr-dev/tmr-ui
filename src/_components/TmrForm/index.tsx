@@ -37,7 +37,7 @@ const TmrForm = (props: TmrFormProps) => {
               </label>
               <input
                 type={type ?? 'text'}
-                placeholder={placeholder}
+                {...(placeholder ? { placeholder } : {})}
                 {...register(`input${index}`, {
                   required: errorOnEmpty,
                   validate: validateError,

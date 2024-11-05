@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import validator from 'validator';
 import TmrForm, { TmrFormProps, TmrFormValues } from '../_components/TmrForm';
 
 const meta: Meta<typeof TmrForm> = {
@@ -45,17 +46,15 @@ export const SignUpForm: Story = {
     inputs: [
       {
         label: 'Username',
-        placeholder: 'Enter your username',
         errorOnEmpty: 'Username is required',
         validateError: (value: string) =>
           value.length >= 3 || 'Username must be at least 3 characters long',
       },
       {
         label: 'Email',
-        placeholder: 'Enter your email',
         errorOnEmpty: 'Email is required',
         validateError: (value: string) =>
-          /\S+@\S+\.\S+/.test(value) || 'Email is not valid',
+          validator.isEmail(value) || 'Email is not valid',
       },
       {
         label: 'Password',
