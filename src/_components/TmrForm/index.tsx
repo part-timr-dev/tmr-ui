@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import '../../index.css';
 import { InputItem } from './types';
 
 export type TmrFormProps = {
