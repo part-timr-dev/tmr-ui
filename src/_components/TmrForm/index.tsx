@@ -7,24 +7,24 @@ export type InputItem = {
   validateError: (value: string) => string | boolean;
 };
 
-export type LoginFormProps = {
+export type TmrFormProps = {
   heading: string;
   inputs: InputItem[];
 };
 
-type FormValues = {
+export type TmrFormValues = {
   [key: string]: string;
 };
 
-const LoginForm = (props: LoginFormProps) => {
+const TmrForm = (props: TmrFormProps) => {
   const { heading, inputs } = props;
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<TmrFormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<TmrFormValues> = (data) => {
     console.log('Form submitted', data);
   };
 
@@ -64,4 +64,4 @@ const LoginForm = (props: LoginFormProps) => {
   );
 };
 
-export default LoginForm;
+export default TmrForm;

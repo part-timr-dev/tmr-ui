@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import LoginForm, { LoginFormProps } from '../_components/LoginForm';
+import TmrForm, { TmrFormProps, TmrFormValues } from '../_components/TmrForm';
 
-const meta: Meta<typeof LoginForm> = {
+const meta: Meta<typeof TmrForm> = {
   title: 'Example/LoginForm',
-  component: LoginForm,
+  component: TmrForm,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof LoginForm>;
+} satisfies Meta<typeof TmrForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const LoginForm: Story = {
   args: {
     heading: 'Login',
     inputs: [
@@ -36,13 +36,20 @@ export const Default: Story = {
           'Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character',
       },
     ],
-  } as LoginFormProps,
+  } as TmrFormProps,
 };
 
-export const CustomValidation: Story = {
+export const SignUpForm: Story = {
   args: {
-    heading: 'Custom Login',
+    heading: 'Sign Up',
     inputs: [
+      {
+        label: 'Username',
+        placeholder: 'Enter your username',
+        errorOnEmpty: 'Username is required',
+        validateError: (value: string) =>
+          value.length >= 3 || 'Username must be at least 3 characters long',
+      },
       {
         label: 'Email',
         placeholder: 'Enter your email',
@@ -55,8 +62,19 @@ export const CustomValidation: Story = {
         placeholder: 'Enter your password',
         errorOnEmpty: 'Password is required',
         validateError: (value: string) =>
-          value.length >= 10 || 'Password must be at least 10 characters long',
+          (value.length >= 8 &&
+            /[A-Z]/.test(value) &&
+            /[0-9]/.test(value) &&
+            /[^A-Za-z0-9]/.test(value)) ||
+          'Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character',
+      },
+      {
+        label: 'Confirm Password',
+        placeholder: 'Confirm your password',
+        errorOnEmpty: 'Confirm Password is required',
+        validateError: (value: string, formValues: TmrFormValues) =>
+          value === formValues.password || 'Passwords do not match',
       },
     ],
-  } as LoginFormProps,
+  } as TmrFormProps,
 };
