@@ -1,24 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-
-export type InputItemType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'number'
-  | 'date'
-  | 'checkbox'
-  | 'radio'
-  | 'file'
-  | 'url'
-  | 'tel';
-
-export type InputItem = {
-  label: string;
-  type?: InputItemType;
-  placeholder: string;
-  errorOnEmpty: string;
-  validateError: (value: string) => string | boolean;
-};
+import { InputItem } from './types';
 
 export type TmrFormProps = {
   heading: string;
