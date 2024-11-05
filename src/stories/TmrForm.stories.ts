@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import TmrForm, { TmrFormProps, TmrFormValues } from '../_components/TmrForm';
 
 const meta: Meta<typeof TmrForm> = {
-  title: 'Example/LoginForm',
+  title: 'Example/TmrForm',
   component: TmrForm,
   parameters: {
     layout: 'centered',
