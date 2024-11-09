@@ -15,5 +15,6 @@ export type InputItem = {
   type?: InputItemType;
   placeholder?: string;
   errorOnEmpty: string;
+  helperText?: string;
   validateError: (value: string) => string | boolean;
 };

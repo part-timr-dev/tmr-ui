@@ -88,6 +88,18 @@ export const ContactForm: Story = {
         validateError: (value: string) =>
           value.length >= 10 || 'Name must be at least 10 characters long',
       },
+      {
+        label: 'Email',
+        placeholder: 'Your email',
+        errorOnEmpty: 'Missing email',
+        validateError: (value: string) => {
+          console.log('validator.isEmail(value)', validator.isEmail(value));
+          return (
+            validator.isEmail(value) || 'We cannot find that email address'
+          );
+        },
+        helperText: 'We will never ever share your email with anyone else',
+      },
     ],
   } as TmrFormProps,
 };
