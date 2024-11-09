@@ -77,3 +77,17 @@ export const SignUpForm: Story = {
     ],
   } as TmrFormProps,
 };
+
+export const ContactForm: Story = {
+  args: {
+    heading: 'Contact me',
+    inputs: [
+      {
+        label: 'Name',
+        errorOnEmpty: 'Name is required',
+        validateError: (value: string) =>
+          value.length >= 10 || 'Name must be at least 10 characters long',
+      },
+    ],
+  } as TmrFormProps,
+};
