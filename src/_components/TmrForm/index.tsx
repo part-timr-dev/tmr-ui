@@ -4,6 +4,7 @@ import { InputItem } from './types';
 
 export type TmrFormProps = {
   heading: string;
+  submitButtonLabel?: string;
   inputs: InputItem[];
 };
 
@@ -12,7 +13,7 @@ export type TmrFormValues = {
 };
 
 const TmrForm = (props: TmrFormProps) => {
-  const { heading, inputs } = props;
+  const { heading, submitButtonLabel, inputs } = props;
   const {
     register,
     handleSubmit,
@@ -24,7 +25,7 @@ const TmrForm = (props: TmrFormProps) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <div className="w-full mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-xl font-bold mb-6">{heading}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         {inputs.map((input, index) => {
@@ -80,7 +81,7 @@ const TmrForm = (props: TmrFormProps) => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          Submit
+          {submitButtonLabel ?? 'Submit'}
         </button>
       </form>
     </div>

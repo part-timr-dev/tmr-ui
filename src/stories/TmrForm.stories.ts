@@ -17,6 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const LoginForm: Story = {
   args: {
     heading: 'Login',
+    submitButtonLabel: 'Enter',
     inputs: [
       {
         label: 'Username',
@@ -43,6 +44,7 @@ export const LoginForm: Story = {
 export const SignUpForm: Story = {
   args: {
     heading: 'Sign Up',
+    submitButtonLabel: '',
     inputs: [
       {
         label: 'Username',
